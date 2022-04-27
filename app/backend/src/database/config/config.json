@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "TRYBE_FUTEBOL_CLUBE",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3002"
+  },
+  "test": {
+    "username": "root",
+    "password": "123456",
+    "database": "TRYBE_FUTEBOL_CLUBE",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3002"
+  },
+  "production": {
+    "username": "root",
+    "password": "123456",
+    "database": "TRYBE_FUTEBOL_CLUBE",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3002"
+  }
+}
