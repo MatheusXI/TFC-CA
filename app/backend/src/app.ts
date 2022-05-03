@@ -25,6 +25,7 @@ class App {
 
     this.app.use(accessControl);
     this.app.use(router);
+    this.app.use(express.json());
     // ...
   }
 
