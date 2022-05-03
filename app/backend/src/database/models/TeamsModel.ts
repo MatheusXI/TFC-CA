@@ -10,7 +10,10 @@ class Teams extends Model {
 Teams.init(
   {
     // ... Campos
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     team_name: DataTypes.STRING,
   },
   {

@@ -3,6 +3,8 @@ services:
   frontend:
     build: ./frontend
     container_name: app_frontend
+    ports:
+      - 3000:3000
     # ...
     depends_on:
       backend:
@@ -16,6 +18,8 @@ services:
   backend:
     build: ./backend
     container_name: app_backend
+    ports:
+      - 3001:3001
     # ...
     depends_on:
       db:

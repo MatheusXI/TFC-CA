@@ -1,9 +1,9 @@
-export class Team {
-    public id: number
+export default class Team {
+  public id: number;
 
-    public team_name: string
+  public team_name: string;
 
-    constructor(team: Omit<Team, 'id'>){
-        Object.assign(this, team);
-    }
+  constructor(team: Omit<Team, 'id'>) {
+    Object.assign(this, team);
+  }
 }

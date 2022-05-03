@@ -1,13 +1,17 @@
-export class Matches {
-    public id: number
+export default class Matches {
+  public id: number;
 
-    home_team: number
-    home_team_goals: number
-    away_team: number
-    away_team_goals: number
-    in_progress: boolean
+  homeTeam: number;
 
-    constructor(Match: Omit<Matches, 'id'>){
-        Object.assign(this, Match);
-    }
+  homeTeamGoals: number;
+
+  awayTeam: number;
+
+  awayTeamGoals: number;
+
+  inProgress: boolean;
+
+  constructor(Match: Omit<Matches, 'id'>) {
+    Object.assign(this, Match);
+  }
 }
