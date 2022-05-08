@@ -31,7 +31,7 @@ export default class ErroType {
 
   private handleMessage() {
     const { code, message } = this._erro;
-    this.defineError(code, message);
+    this.defineError(code || 400, message);
   }
 
   private defineError(code: number, message: string) {
