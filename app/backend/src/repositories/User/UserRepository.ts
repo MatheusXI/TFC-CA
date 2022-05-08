@@ -1,5 +1,5 @@
-import { User } from '../entites/User';
-import UserModel from '../database/models/UsersModel';
+import { User } from '../../entites/User';
+import UserModel from '../../database/models/UsersModel';
 import IUserRepository from './IUserRepository';
 
 export default class UserRepository implements IUserRepository {
@@ -9,16 +9,16 @@ export default class UserRepository implements IUserRepository {
     this.userModel = UserModel;
   }
 
-  async findByEmail(email: string): Promise<any> {
+  async findByEmail(email: string) {
     const user = await this.userModel.findOne({
       where: { email },
     });
-    if (!user) throw new Error('User not found');
     console.log(user, 'user findByemail');
-    return user;
+    if (user === null) return user;
+    return user._attributes;
   }
 
-  async createUser(user: User): Promise<void> {
+  async createUser(user: User) {
     await this.userModel.create(user);
   }
 }

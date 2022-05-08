@@ -1,5 +1,6 @@
+import hashGenerate from '../../auxFunc/hash/hashGenerate';
 import { User } from '../../entites/User';
-import IUserRepository from '../../repositories/IUserRepository';
+import IUserRepository from '../../repositories/User/IUserRepository';
 import ICreateUserRequestDTO from './createUserDTO';
 
 export default class CreateUserUseCase {
@@ -11,7 +12,11 @@ export default class CreateUserUseCase {
     if (userAlreadyExists) {
       throw new Error('User already exists.');
     }
-    const user = new User(data);
+
+    const hashPassword = await hashGenerate(data.password);
+    const newUser = { ...data, password: hashPassword };
+
+    const user = new User(newUser);
 
     await this.userRepository.createUser(user);
   }

@@ -7,28 +7,31 @@ class Users extends Model {
   // public <campo>!: <tipo>;
 }
 
-Users.init({
-  // ... Campos
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true
+Users.init(
+  {
+    // ... Campos
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    username: DataTypes.STRING,
+    role: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
   },
-  username: DataTypes.STRING,
-  role: DataTypes.STRING,
-  email: DataTypes.STRING,
-  password: DataTypes.STRING,
-}, {
-  // ... Outras configs
-  underscored: true,
-  sequelize: db,
-  // modelName: 'example',
-  timestamps: false,
-});
+  {
+    // ... Outras configs
+    underscored: true,
+    sequelize: db,
+    // modelName: 'example',
+    timestamps: false,
+  },
+);
 
 /**
-  * `Workaround` para aplicar as associations em TS:
-  * Associations 1:N devem ficar em uma das instâncias de modelo
-  * */
+ * `Workaround` para aplicar as associations em TS:
+ * Associations 1:N devem ficar em uma das instâncias de modelo
+ * */
 
 // OtherModel.belongsTo(Example, { foreignKey: 'campoA', as: 'campoEstrangeiroA' });
 // OtherModel.belongsTo(Example, { foreignKey: 'campoB', as: 'campoEstrangeiroB' });
