@@ -9,13 +9,15 @@ const router = Router();
 router.post(
   '/users',
   userValidationMiddleware,
-  (req: Request, res: Response, next: NextFunction) => createUserController.handle(req, res, next),
+  (req: Request, res: Response, next: NextFunction) =>
+    createUserController.handle(req, res, next),
 );
 
 router.post(
   '/login',
   loginValidationMiddleware,
-  (req: Request, res: Response, next: NextFunction) => loginController.handle(req, res, next),
+  (req: Request, res: Response, next: NextFunction) =>
+    loginController.handle(req, res, next),
 );
 
 export default router;

@@ -1,4 +1,4 @@
-import IUserRepository from '../../repositories/User/IUserRepository';
+/* import IUserRepository from '../../repositories/User/IUserRepository';
 
 export default class LoginValidate {
   constructor(private userRepository: IUserRepository) {}
@@ -7,3 +7,4 @@ export default class LoginValidate {
       this.userRepository.findByEmail
   }
 }
+ */
