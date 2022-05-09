@@ -11,6 +11,8 @@ const loginValidationMiddleware = async (
 
     return next();
   } catch (error: any) {
+    console.log(error);
+
     next(error);
   }
 };
