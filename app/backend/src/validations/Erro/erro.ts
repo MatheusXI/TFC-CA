@@ -22,11 +22,19 @@ export default class ErroType {
 
   private handleJoi() {
     const { type, message } = this._erro.details[0];
-
-    if (type === JoiTypes.ANY_REQUIRED || JoiTypes.STRING_EMPTY) {
-      this.defineError(400, message);
-    } else {
-      this.defineError(401, message);
+    switch (type) {
+      case JoiTypes.ANY_REQUIRED:
+        this.defineError(400, message);
+        break;
+      case JoiTypes.STRING_EMPTY:
+        this.defineError(400, message);
+        break;
+      case JoiTypes.STRING_EMAIL:
+        this.defineError(401, message);
+        break;
+      default:
+        this.defineError(401, message);
+        break;
     }
   }
 
