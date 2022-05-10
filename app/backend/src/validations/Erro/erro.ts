@@ -23,9 +23,9 @@ export default class ErroType {
     const { type, message } = this._erro.details[0];
 
     if (type === JoiTypes.ANY_REQUIRED) {
-      this.defineError(401, message);
-    } else {
       this.defineError(400, message);
+    } else {
+      this.defineError(401, message);
     }
   }
 
