@@ -1,6 +1,7 @@
 import ITokenRepository from '../../repositories/Token/ITokenRepository';
 import ILoginDTO from './loginDTO';
 import ILoginRepository from '../../repositories/Login/ILoginRepository';
+import CustomError from '../../auxMiddlewares/Erro/CustomError';
 
 export default class LoginUseCase {
   constructor(
@@ -10,10 +11,9 @@ export default class LoginUseCase {
 
   async execute(data: ILoginDTO) {
     const userExists = await this.loginRepository.validateLogin(data);
-    console.log(userExists, 'loginUseCase');
 
     if (!userExists) {
-      throw new Error('User not found');
+      throw new CustomError(401, 'Incorrect email or password');
     }
     const user = await this.loginRepository.loginResponse(data);
     const token = await this.tokenRepository.tokenGenerate(data);

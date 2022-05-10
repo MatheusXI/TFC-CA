@@ -1,13 +1,13 @@
 class CustomError extends Error {
-  status: number;
+  code: number;
 
   message: string;
 
   isJoi?: boolean;
 
-  constructor(status: number, message: string) {
+  constructor(code: number, message: string) {
     super(message);
-    this.status = status;
+    this.code = code;
     this.message = message;
   }
 }

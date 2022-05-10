@@ -23,25 +23,27 @@ export default class ErroType {
     const { type, message } = this._erro.details[0];
 
     if (type === JoiTypes.ANY_REQUIRED) {
-      this.defineError(400, message);
-    } else {
       this.defineError(401, message);
+    } else {
+      this.defineError(400, message);
     }
   }
 
   private handleMessage() {
     const { code, message } = this._erro;
-    this.defineError(code || 400, message);
+    this.defineError(code, message);
   }
 
   private defineError(code: number, message: string) {
     this._erro.code = code;
     this._erro.message = message;
+    this._erro = { code, message };
   }
 
   private verifyErrorType(err: any) {
+    console.log(err.isJoi, 'classe erro');
     if (err.isJoi) return this.handleJoi();
-    if (err.message) return this.handleMessage();
+    if (err.code) return this.handleMessage();
     return this.handleUnknown();
   }
 }

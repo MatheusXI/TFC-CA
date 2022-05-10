@@ -7,12 +7,10 @@ const userValidationMiddleware = async (
   next: NextFunction,
 ) => {
   try {
-    const validate = await userSchema.validateAsync(req.body);
-    console.log(validate, 'validate userValidationMiddleware');
+    await userSchema.validateAsync(req.body);
 
     return next();
   } catch (error: any) {
-    console.log(error, 'error userValidationMiddleware');
     next(error);
   }
 };

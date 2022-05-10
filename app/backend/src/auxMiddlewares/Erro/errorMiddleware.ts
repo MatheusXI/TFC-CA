@@ -8,14 +8,10 @@ function errorMiddleware(
   response: Response,
   _next: NextFunction,
 ) {
+  console.log(error, 'error mid');
   const newErro = new ErroType(error).erro;
-
-  const status = newErro.status || 500;
-  const message = newErro.message || 'Internal server error';
-  response.status(status).json({
-    status,
-    message,
-  });
+  const { code, message } = newErro;
+  response.status(code).json({ message });
 }
 
 export default errorMiddleware;

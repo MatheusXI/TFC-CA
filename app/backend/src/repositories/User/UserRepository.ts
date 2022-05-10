@@ -13,7 +13,7 @@ export default class UserRepository implements IUserRepository {
     const user = await this.userModel.findOne({
       where: { email },
     });
-    console.log(user, 'user findByemail');
+
     if (user === null) return user;
     return user._attributes;
   }

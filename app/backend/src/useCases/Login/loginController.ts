@@ -12,8 +12,6 @@ export default class LoginController {
   ): Promise<Response | void> {
     try {
       const token = await this.loginUseCase.execute(req.body);
-      console.log(token, 'token login controller');
-
       return res.status(200).json(token);
     } catch (error: any) {
       next(error);

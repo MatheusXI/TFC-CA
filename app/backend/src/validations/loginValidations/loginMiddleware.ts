@@ -11,7 +11,7 @@ const loginValidationMiddleware = async (
 
     return next();
   } catch (error: any) {
-    console.log(error);
+    console.log(error.isJoi);
 
     next(error);
   }
