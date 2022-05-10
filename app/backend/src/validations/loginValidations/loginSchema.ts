@@ -15,6 +15,7 @@ const loginSchema = Joi.object({
     }),
   password: Joi.string().min(8).required().messages({
     'string.base': 'Password must be a string',
+    'string.empty': FILLED,
     'any.required': FILLED,
     'string.min': 'Password must be longer than 7 characters',
   }),
