@@ -1,6 +1,6 @@
 import { Response, Router, Request, NextFunction } from 'express';
-import getTeamByIdController from '../useCases/GetTeamById';
-import getAllTeamsController from '../useCases/GetAllTeams';
+import getTeamByIdController from '../useCases/Teams/GetTeamById';
+import getAllTeamsController from '../useCases/Teams/GetAllTeams';
 
 const teamRouter = Router();
 

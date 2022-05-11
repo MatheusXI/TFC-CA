@@ -1,6 +1,6 @@
-import IUserRepository from '../../repositories/User/IUserRepository';
-import ITokenRepository from '../../repositories/Token/ITokenRepository';
-import CustomError from '../../auxMiddlewares/Erro/CustomError';
+import IUserRepository from '../../../repositories/User/IUserRepository';
+import ITokenRepository from '../../../repositories/Token/ITokenRepository';
+import CustomError from '../../../auxMiddlewares/Erro/CustomError';
 
 export default class LoginValidateUseCase {
   constructor(

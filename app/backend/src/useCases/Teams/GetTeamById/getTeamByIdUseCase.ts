@@ -1,5 +1,5 @@
-import CustomError from '../../auxMiddlewares/Erro/CustomError';
-import ITeamRepository from '../../repositories/Teams/ITeamsRepository';
+import CustomError from '../../../auxMiddlewares/Erro/CustomError';
+import ITeamRepository from '../../../repositories/Teams/ITeamsRepository';
 
 export default class GetTeamByIdUseCase {
   constructor(private teamRepository: ITeamRepository) {}

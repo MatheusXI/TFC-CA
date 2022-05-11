@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import * as fs from 'fs/promises';
-import ILoginDTO from '../../useCases/Login/loginDTO';
+import ILoginDTO from '../../useCases/Users/Login/loginDTO';
 
 const tokenGenerate = async (payload: ILoginDTO): Promise<string> => {
   const secret = await fs.readFile('jwt.evaluation.key');

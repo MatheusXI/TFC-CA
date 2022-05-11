@@ -1,5 +1,5 @@
 import UserModel from '../../database/models/UsersModel';
-import loginDTO from '../../useCases/Login/loginDTO';
+import loginDTO from '../../useCases/Users/Login/loginDTO';
 import ILoginRepository from './ILoginRepository';
 import hashVerify from '../../auxFunc/hash/hashVerify';
 

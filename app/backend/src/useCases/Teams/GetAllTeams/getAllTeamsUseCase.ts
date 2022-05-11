@@ -1,4 +1,4 @@
-import ITeamRepository from '../../repositories/Teams/ITeamsRepository';
+import ITeamRepository from '../../../repositories/Teams/ITeamsRepository';
 
 export default class GetAllTeamsUseCase {
   constructor(private teamRepository: ITeamRepository) {}

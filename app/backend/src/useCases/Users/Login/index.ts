@@ -1,5 +1,5 @@
-import LoginRepository from '../../repositories/Login/LoginRepository';
-import TokenRepository from '../../repositories/Token/TokenRepository';
+import LoginRepository from '../../../repositories/Login/LoginRepository';
+import TokenRepository from '../../../repositories/Token/TokenRepository';
 import LoginUseCase from './loginUseCase';
 import LoginController from './loginController';
 

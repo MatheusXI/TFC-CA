@@ -1,4 +1,4 @@
-import TeamRepository from '../../repositories/Teams/TeamRepository';
+import TeamRepository from '../../../repositories/Teams/TeamRepository';
 import GetTeamByIdController from './getTeamByIdController';
 import GetTeamByIdUseCase from './getTeamByIdUseCase';
 

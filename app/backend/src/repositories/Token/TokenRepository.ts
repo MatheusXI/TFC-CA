@@ -1,5 +1,5 @@
 import { JwtPayload } from 'jsonwebtoken';
-import ILoginDTO from '../../useCases/Login/loginDTO';
+import ILoginDTO from '../../useCases/Users/Login/loginDTO';
 import tokenVerify from '../../auxFunc/Token/tokenVerify';
 import tokenGenerate from '../../auxFunc/Token/tokenGenerate';
 import ITokenRepository from './ITokenRepository';

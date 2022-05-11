@@ -1,5 +1,5 @@
-import TokenRepository from '../../repositories/Token/TokenRepository';
-import UserRepository from '../../repositories/User/UserRepository';
+import TokenRepository from '../../../repositories/Token/TokenRepository';
+import UserRepository from '../../../repositories/User/UserRepository';
 import LoginValidateController from './loginValidateController';
 import LoginValidateUseCase from './loginValidateUsecase';
 

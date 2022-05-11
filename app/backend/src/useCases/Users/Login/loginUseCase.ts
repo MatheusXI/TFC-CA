@@ -1,7 +1,7 @@
-import ITokenRepository from '../../repositories/Token/ITokenRepository';
+import ITokenRepository from '../../../repositories/Token/ITokenRepository';
 import ILoginDTO from './loginDTO';
-import ILoginRepository from '../../repositories/Login/ILoginRepository';
-import CustomError from '../../auxMiddlewares/Erro/CustomError';
+import ILoginRepository from '../../../repositories/Login/ILoginRepository';
+import CustomError from '../../../auxMiddlewares/Erro/CustomError';
 
 export default class LoginUseCase {
   constructor(

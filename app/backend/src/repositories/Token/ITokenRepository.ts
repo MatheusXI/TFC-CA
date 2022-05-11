@@ -1,5 +1,5 @@
 import { JwtPayload } from 'jsonwebtoken';
-import ILoginDTO from '../../useCases/Login/loginDTO';
+import ILoginDTO from '../../useCases/Users/Login/loginDTO';
 
 export default interface ITokenRepository {
   tokenGenerate(data: ILoginDTO): Promise<string>;

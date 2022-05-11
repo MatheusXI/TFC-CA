@@ -1,7 +1,7 @@
 import { Response, Router, Request, NextFunction } from 'express';
-import createUserController from './useCases/CreateUser';
-import loginController from './useCases/Login';
-import loginValidateController from './useCases/LoginValidate';
+import createUserController from './useCases/Users/CreateUser';
+import loginController from './useCases/Users/Login';
+import loginValidateController from './useCases/Users/LoginValidate';
 import loginValidationMiddleware from './validations/loginValidations/loginMiddleware';
 import userValidationMiddleware from './validations/userValidations/userValidationMiddleware';
 
