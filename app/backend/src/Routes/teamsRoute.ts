@@ -1,13 +1,14 @@
 import { Response, Router, Request, NextFunction } from 'express';
+import getTeamByIdController from '../useCases/GetTeamById';
 import getAllTeamsController from '../useCases/GetAllTeams';
 
 const teamRouter = Router();
 
-teamRouter.get(
-  '/',
-  (req: Request, res: Response, next: NextFunction) =>
-    getAllTeamsController.handle(req, res, next),
-);
+teamRouter.get('/', (req: Request, res: Response, next: NextFunction) =>
+  getAllTeamsController.handle(req, res, next));
+
+teamRouter.get('/:id', (req: Request, res: Response, next: NextFunction) =>
+  getTeamByIdController.handle(req, res, next));
 
 /* router.post(
   '/login',
