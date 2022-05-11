@@ -5,6 +5,7 @@ export default class GetAllTeamsUseCase {
 
   async execute() {
     const teams = await this.teamRepository.getAllTeams();
+
     return teams;
   }
 }

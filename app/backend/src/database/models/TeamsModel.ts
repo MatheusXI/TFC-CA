@@ -17,7 +17,7 @@ Teams.init(
       type: DataTypes.INTEGER,
       primaryKey: true,
     },
-    team_name: DataTypes.STRING,
+    teamName: DataTypes.STRING,
   },
   {
     // ... Outras configs
