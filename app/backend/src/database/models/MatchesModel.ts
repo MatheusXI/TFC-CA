@@ -9,6 +9,14 @@ class Matches extends Model {
   id!: number;
 
   homeTeam!: number;
+
+  homeTeamGoals!: number;
+
+  awayTeam!: number;
+
+  awayTeamGoals!:number;
+
+  inProgress!: boolean;
 }
 
 Matches.init(
@@ -18,23 +26,23 @@ Matches.init(
       type: DataTypes.INTEGER,
       primaryKey: true,
     },
-    home_team: {
+    homeTeam: {
       type: DataTypes.NUMBER,
       references: {
         model: Teams,
         key: 'id',
       },
     },
-    home_team_goals: DataTypes.NUMBER,
-    away_team: {
+    homeTeamGoals: DataTypes.NUMBER,
+    awayTeam: {
       type: DataTypes.NUMBER,
       references: {
         model: Teams,
         key: 'id',
       },
     },
-    away_team_goals: DataTypes.NUMBER,
-    in_progress: DataTypes.BOOLEAN,
+    awayTeamGoals: DataTypes.NUMBER,
+    inProgress: DataTypes.BOOLEAN,
   },
   {
     // ... Outras configs
