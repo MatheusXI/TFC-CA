@@ -15,7 +15,7 @@ export default class UserRepository implements IUserRepository {
     });
 
     if (user === null) return user;
-    return user._attributes;
+    return user;
   }
 
   async createUser(user: User) {

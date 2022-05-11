@@ -5,6 +5,7 @@ import LoginController from './loginController';
 
 const loginRepository = new LoginRepository();
 const tokenRepository = new TokenRepository();
+
 const loginUseCase = new LoginUseCase(loginRepository, tokenRepository);
 const loginController = new LoginController(loginUseCase);
 

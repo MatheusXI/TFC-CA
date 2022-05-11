@@ -1,3 +1,5 @@
+import { JsonWebTokenError } from 'jsonwebtoken';
+
 enum JoiTypes {
   ANY_REQUIRED = 'any.required',
   STRING_BASE = 'string.base',
@@ -43,6 +45,11 @@ export default class ErroType {
     this.defineError(code, message);
   }
 
+  private handleJWT() {
+    const { message } = this._erro;
+    this.defineError(401, message);
+  }
+
   private defineError(code: number, message: string) {
     this._erro.code = code;
     this._erro.message = message;
@@ -50,9 +57,10 @@ export default class ErroType {
   }
 
   private verifyErrorType(err: any) {
-    console.log(err.isJoi, 'classe erro');
+    console.log(err instanceof JsonWebTokenError, 'erro');
     if (err.isJoi) return this.handleJoi();
     if (err.code) return this.handleMessage();
+    if (err instanceof JsonWebTokenError) return this.handleJWT();
     return this.handleUnknown();
   }
 }

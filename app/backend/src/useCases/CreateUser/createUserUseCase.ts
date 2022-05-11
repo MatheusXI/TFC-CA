@@ -1,3 +1,4 @@
+import CustomError from '../../auxMiddlewares/Erro/CustomError';
 import hashGenerate from '../../auxFunc/hash/hashGenerate';
 import { User } from '../../entites/User';
 import IUserRepository from '../../repositories/User/IUserRepository';
@@ -10,7 +11,7 @@ export default class CreateUserUseCase {
     const userAlreadyExists = await this.userRepository.findByEmail(data.email);
 
     if (userAlreadyExists) {
-      throw new Error('User already exists.');
+      throw new CustomError(404, 'User already exists.');
     }
 
     const hashPassword = await hashGenerate(data.password);

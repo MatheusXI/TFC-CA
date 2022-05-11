@@ -1,6 +1,7 @@
 import { Response, Router, Request, NextFunction } from 'express';
 import createUserController from './useCases/CreateUser';
 import loginController from './useCases/Login';
+import loginValidateController from './useCases/LoginValidate';
 import loginValidationMiddleware from './validations/loginValidations/loginMiddleware';
 import userValidationMiddleware from './validations/userValidations/userValidationMiddleware';
 
@@ -18,6 +19,12 @@ router.post(
   loginValidationMiddleware,
   (req: Request, res: Response, next: NextFunction) =>
     loginController.handle(req, res, next),
+);
+
+router.get(
+  '/login/validate',
+  (req: Request, res: Response, next: NextFunction) =>
+    loginValidateController.handle(req, res, next),
 );
 
 export default router;

@@ -21,6 +21,7 @@ export default class TokenRepository implements ITokenRepository {
 
   async tokenVerify(token: string): Promise<string | JwtPayload> {
     const data = await this.verify(token);
+    console.log(data, 'token verify repository');
     return data;
   }
 }
