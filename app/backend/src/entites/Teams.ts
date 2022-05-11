@@ -1,9 +1,14 @@
+export interface ITeam {
+  id?: number;
+  teamName: string;
+}
+
 export default class Team {
   public id: number;
 
-  public team_name: string;
+  public teamName: string;
 
-  constructor(team: Omit<Team, 'id'>) {
+  constructor(team: ITeam) {
     Object.assign(this, team);
   }
 }

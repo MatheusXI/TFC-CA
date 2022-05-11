@@ -57,7 +57,6 @@ export default class ErroType {
   }
 
   private verifyErrorType(err: any) {
-    console.log(err instanceof JsonWebTokenError, 'erro');
     if (err.isJoi) return this.handleJoi();
     if (err.code) return this.handleMessage();
     if (err instanceof JsonWebTokenError) return this.handleJWT();

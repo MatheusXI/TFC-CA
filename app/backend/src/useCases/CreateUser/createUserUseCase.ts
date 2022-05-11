@@ -20,5 +20,6 @@ export default class CreateUserUseCase {
     const user = new User(newUser);
 
     await this.userRepository.createUser(user);
+    return user;
   }
 }

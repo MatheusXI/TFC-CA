@@ -6,6 +6,9 @@ import Teams from './TeamsModel';
 
 class Matches extends Model {
   // public <campo>!: <tipo>;
+  id!: number;
+
+  homeTeam!: number;
 }
 
 Matches.init(
