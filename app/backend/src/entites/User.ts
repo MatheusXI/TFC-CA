@@ -1,4 +1,4 @@
-export interface Iuser {
+export interface IUser {
   id?: number;
   username: string;
   role: string;
@@ -6,7 +6,7 @@ export interface Iuser {
   password: string;
 }
 
-export class User {
+export default class User {
   public id?: number;
 
   public username: string;
@@ -17,7 +17,10 @@ export class User {
 
   public password: string;
 
-  constructor(user: Omit<User, 'id'>) {
-    Object.assign(this, user);
+  constructor(user: IUser) {
+    this.username = user.username;
+    this.email = user.email;
+    this.role = user.role;
+    this.password = user.password;
   }
 }

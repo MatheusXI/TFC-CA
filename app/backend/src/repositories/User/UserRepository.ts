@@ -1,4 +1,4 @@
-import { User } from '../../entites/User';
+import { IUser } from '../../entites/User';
 import UserModel from '../../database/models/UsersModel';
 import IUserRepository from './IUserRepository';
 
@@ -14,11 +14,13 @@ export default class UserRepository implements IUserRepository {
       where: { email },
     });
 
-    if (user === null) return user;
+    if (!user) {
+      return user;
+    }
     return user;
   }
 
-  async createUser(user: User) {
+  async createUser(user: IUser) {
     await this.userModel.create(user);
   }
 }

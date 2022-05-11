@@ -1,6 +1,6 @@
 import CustomError from '../../auxMiddlewares/Erro/CustomError';
 import hashGenerate from '../../auxFunc/hash/hashGenerate';
-import { User } from '../../entites/User';
+import User from '../../entites/User';
 import IUserRepository from '../../repositories/User/IUserRepository';
 import ICreateUserRequestDTO from './createUserDTO';
 
