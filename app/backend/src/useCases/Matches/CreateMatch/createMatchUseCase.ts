@@ -15,7 +15,7 @@ export default class CreateMatchUseCase {
     const home = await this.teamRepository.getTeamById(data.match.homeTeam);
     const away = await this.teamRepository.getTeamById(data.match.awayTeam);
 
-    if (!home || !away) { throw new CustomError(401, 'There is no team with such id!'); }
+    if (!home || !away) { throw new CustomError(404, 'There is no team with such id!'); }
 
     await this.tokenRepository.userAuthenticate(data.token);
     const matchCreated = await this.matchesRepository.createMatch(data.match);
