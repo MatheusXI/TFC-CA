@@ -10,6 +10,17 @@ export default class MatchesRepository implements IMatchesRepository {
     this.matchesModel = Matches;
   }
 
+  async endMatch(id: number): Promise<Matches | null> {
+    await this.matchesModel.update({ inProgress: false }, { where: { id } });
+    const userUpdated = await this.getmatchById(id);
+    return userUpdated;
+  }
+
+  async getmatchById(id: number): Promise<Matches | null> {
+    const match = await this.matchesModel.findByPk(id);
+    return match;
+  }
+
   async createMatch(data: IMatch): Promise<IMatch | null> {
     const matchCreated = await this.matchesModel.create(data);
     console.log(matchCreated, 'matchcreated');

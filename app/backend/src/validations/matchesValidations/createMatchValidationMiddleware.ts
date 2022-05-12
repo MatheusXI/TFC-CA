@@ -9,9 +9,13 @@ const createMatchValidationMiddleware = async (
   try {
     await matchesSchema.validateAsync(req.body);
     const { homeTeam, awayTeam, inProgress } = req.body;
-    if (homeTeam === awayTeam || !inProgress) {
-      return res.status(404).json({ messaage: 'Algo deu errado' });
-    } next();
+    if (homeTeam === awayTeam) {
+      return res.status(404).json({
+        message: 'It is not possible to create a match with two equal teams',
+      });
+    }
+    if (!inProgress) { return res.status(404).json({ message: 'Algo deu errado' }); }
+    next();
   } catch (error) {
     next(error);
   }
