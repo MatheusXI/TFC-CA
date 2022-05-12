@@ -9,10 +9,11 @@ export default class CreateMatchController {
     try {
       const token = req.headers.authorization;
       if (token) {
-        const matchPlusToken = {
-          match: req.body,
-          token,
-        };
+        const matchPlusToken = { match: req.body, token };
+        const { inProgress } = req.body;
+        if (!inProgress) {
+          return res.status(404).json({ message: 'Algo deu errado' });
+        }
         const matches = await this.createMatchUseCase.execute(matchPlusToken);
         return res.status(201).json(matches);
       }

@@ -27,11 +27,13 @@ matchesRouter.post(
 
 matchesRouter.patch(
   '/:id/finish',
+  createMatchValid,
   (req: Request, res: Response, next: NextFunction) =>
     patchMatchController.handle(req, res, next),
 );
 matchesRouter.patch(
   '/:id/',
+  createMatchValid,
   (req: Request, res: Response, next: NextFunction) =>
     patchMatchController.handle(req, res, next),
 );
