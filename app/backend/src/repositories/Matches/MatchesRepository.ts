@@ -2,7 +2,7 @@ import Teams from '../../database/models/TeamsModel';
 import Matches from '../../database/models/MatchesModel';
 import IMatchesRepository from './IMatchesRepository';
 import { IMatch } from '../../useCases/Matches/CreateMatch/createMatchDTO';
-import IUpdateMatchDTO from '../../useCases/Matches/UpdateMatch/updateMatchDTO';
+
 
 export default class MatchesRepository implements IMatchesRepository {
   private matchesModel;
@@ -11,21 +11,19 @@ export default class MatchesRepository implements IMatchesRepository {
     this.matchesModel = Matches;
   }
 
-  async updateMatch({
-    id,
-    homeTeamGoals,
-    awayTeamGoals,
-  }: IUpdateMatchDTO): Promise<Matches | null> {
-    await this.matchesModel.update(
-      { homeTeamGoals, awayTeamGoals },
-      { where: { id } },
-    );
+  async updateMatch(data: any): Promise<Matches | null> {
+    const { id, ...obj } = data;
+    await this.matchesModel.update({ ...obj }, { where: { id } });
     const updatedMatch = await this.getmatchById(id);
     return updatedMatch;
   }
 
-  async endMatch(id: number): Promise<Matches | null> {
-    await this.matchesModel.update({ inProgress: false }, { where: { id } });
+  async updateProgress(id: number): Promise<Matches | null> {
+    const user = await this.matchesModel.findByPk(id);
+    await this.matchesModel.update(
+      { inProgress: !user?.inProgress },
+      { where: { id } },
+    );
     const userUpdated = await this.getmatchById(id);
     return userUpdated;
   }
