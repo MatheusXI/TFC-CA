@@ -4,12 +4,9 @@ import LoginValidateController from './loginValidateController';
 import LoginValidateUseCase from './loginValidateUsecase';
 
 const userRepository = new UserRepository();
-const tokenRepository = new TokenRepository();
+const tokenRepository = new TokenRepository(userRepository);
 
-const loginValidateUseCase = new LoginValidateUseCase(
-  userRepository,
-  tokenRepository,
-);
+const loginValidateUseCase = new LoginValidateUseCase(tokenRepository);
 
 const loginValidateController = new LoginValidateController(loginValidateUseCase);
 

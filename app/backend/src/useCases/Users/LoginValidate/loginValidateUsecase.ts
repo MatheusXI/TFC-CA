@@ -1,10 +1,8 @@
-import IUserRepository from '../../../repositories/User/IUserRepository';
 import ITokenRepository from '../../../repositories/Token/ITokenRepository';
 import CustomError from '../../../auxMiddlewares/Erro/CustomError';
 
 export default class LoginValidateUseCase {
   constructor(
-    private userRepository: IUserRepository,
     private tokenRepository: ITokenRepository,
   ) {}
 
@@ -14,12 +12,10 @@ export default class LoginValidateUseCase {
     if (typeof userToken === 'string') {
       throw new CustomError(401, 'Invalid Token');
     }
-
-    const authenticatedUser = await this.userRepository.findByEmail(
-      userToken.email,
+    const userAuthenticated = await this.tokenRepository.tokenAuthenticate(
+      userToken,
     );
-    console.log(authenticatedUser, 'authenticatedUser');
-    if (!authenticatedUser) throw new CustomError(401, 'Invalid Token');
-    return authenticatedUser.role;
+    if (typeof userAuthenticated === 'boolean') throw new CustomError(401, 'Invalid Token');
+    return userAuthenticated.role;
   }
 }
