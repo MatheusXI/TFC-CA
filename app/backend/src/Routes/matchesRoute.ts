@@ -33,7 +33,6 @@ matchesRouter.patch(
 );
 matchesRouter.patch(
   '/:id/',
-  createMatchValid,
   (req: Request, res: Response, next: NextFunction) =>
     patchMatchController.handle(req, res, next),
 );
