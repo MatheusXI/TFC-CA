@@ -5,6 +5,7 @@ import getMatchesByProgressController from '../useCases/Matches/GetMatchesByProg
 import getAllMatchesController from '../useCases/Matches/GetAllMatches';
 import createMatchController from '../useCases/Matches/CreateMatch';
 import patchMatchController from '../useCases/Matches/PatchMatch';
+import updateMatchController from '../useCases/Matches/UpdateMatch';
 
 const matchesRouter = Router();
 
@@ -25,9 +26,17 @@ matchesRouter.post(
     createMatchController.handle(req, res, next),
 );
 
-matchesRouter.patch('/:id', (req: Request, res: Response, next: NextFunction) =>
-  patchMatchController.handle(req, res, next));
+matchesRouter.patch(
+  '/:id/finish',
+  (req: Request, res: Response, next: NextFunction) =>
+    patchMatchController.handle(req, res, next),
+);
 
+matchesRouter.patch(
+  '/:id',
+  (req: Request, res: Response, next: NextFunction) =>
+    updateMatchController.handle(req, res, next),
+);
 /* matcheRouter.get('/:id', (req: Request, res: Response, next: NextFunction) =>
   getMatcheByIdController.handle(req, res, next)); */
 
