@@ -3,7 +3,6 @@ import Matches from '../../database/models/MatchesModel';
 import IMatchesRepository from './IMatchesRepository';
 import { IMatch } from '../../useCases/Matches/CreateMatch/createMatchDTO';
 
-
 export default class MatchesRepository implements IMatchesRepository {
   private matchesModel;
 

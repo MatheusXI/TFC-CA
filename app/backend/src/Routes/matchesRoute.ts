@@ -5,6 +5,7 @@ import getMatchesByProgressController from '../useCases/Matches/GetMatchesByProg
 import getAllMatchesController from '../useCases/Matches/GetAllMatches';
 import createMatchController from '../useCases/Matches/CreateMatch';
 import patchMatchController from '../useCases/Matches/PatchMatch';
+import patchFinisMatchController from '../useCases/Matches/PatchFinishMatch';
 
 const matchesRouter = Router();
 
@@ -27,9 +28,8 @@ matchesRouter.post(
 
 matchesRouter.patch(
   '/:id/finish',
-  createMatchValid,
   (req: Request, res: Response, next: NextFunction) =>
-    patchMatchController.handle(req, res, next),
+    patchFinisMatchController.handle(req, res, next),
 );
 matchesRouter.patch(
   '/:id/',
