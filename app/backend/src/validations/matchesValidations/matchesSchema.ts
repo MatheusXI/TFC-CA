@@ -22,7 +22,6 @@ const matchesSchema = Joi.object({
     'number.min': 'awayTeamGoals Id must be bigger than 0',
   }),
   inProgress: Joi.boolean()
-    .required()
     .messages({
       'boolean.base': 'inProgress must be a boolean',
       'any.required': 'inProgress is required',

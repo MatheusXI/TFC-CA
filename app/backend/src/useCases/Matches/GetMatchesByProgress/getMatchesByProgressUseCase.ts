@@ -6,7 +6,6 @@ export default class GetMatchesByProgressUseCase {
 
   async execute(progress: string) {
     const inProgress = progress === 'true';
-    console.log(inProgress, 'inProgress');
     const matches = await this.matchesRepository.getMatchesByProgress(inProgress);
     if (!matches) throw new CustomError(404, 'No matches found!');
     return matches;

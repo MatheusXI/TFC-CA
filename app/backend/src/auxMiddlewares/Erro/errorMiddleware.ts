@@ -8,9 +8,7 @@ function errorMiddleware(
   response: Response,
   _next: NextFunction,
 ) {
-  console.log(error, 'error mid');
   const newErro = new ErroType(error).erro;
-  console.log(newErro, 'newerro');
 
   const { code, message } = newErro;
   response.status(code).json({ message });
