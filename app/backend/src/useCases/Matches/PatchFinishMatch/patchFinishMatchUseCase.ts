@@ -7,7 +7,7 @@ export default class PatchFinishMatchUseCase {
   async execute(id: string) {
     if (Number.isNaN(+id)) throw new CustomError(401, 'Invalid Id');
     const userUpdated = await this.matchesRepository.updateProgress(+id);
-    if (!userUpdated) throw new Error('Algo deu errado');
+    if (!userUpdated) throw new Error('There is no team with such id!');
 
     return userUpdated;
   }
