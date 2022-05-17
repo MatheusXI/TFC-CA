@@ -12,7 +12,7 @@ export default class CreateMatchController {
         const matchPlusToken = { match: req.body, token };
         const { inProgress } = req.body;
         if (!inProgress) {
-          return res.status(404).json({ message: 'Algo deu errado' });
+          return res.status(404).json({ message: 'There is no team with such id!' });
         }
         const matches = await this.createMatchUseCase.execute(matchPlusToken);
         return res.status(201).json(matches);
