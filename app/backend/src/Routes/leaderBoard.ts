@@ -1,17 +1,17 @@
 import { Response, Router, Request, NextFunction } from 'express';
 import getTeamByIdController from '../useCases/Teams/GetTeamById';
-import getAllTeamsController from '../useCases/Teams/GetAllTeams';
 import getTeamAndMatchesController from '../useCases/Teams/GetTeamAndMatches';
+import createLeaderBoardController from '../useCases/LeaderBoard/CreateLeaderBoard';
 
-const teamRouter = Router();
+const leaderRouter = Router();
 
-teamRouter.get('/', (req: Request, res: Response, next: NextFunction) =>
-  getAllTeamsController.handle(req, res, next));
+leaderRouter.get('/', (req: Request, res: Response, next: NextFunction) =>
+  createLeaderBoardController.handle(req, res, next));
 
-teamRouter.get('/teste', (req: Request, res: Response, next: NextFunction) =>
+leaderRouter.get('/teste', (req: Request, res: Response, next: NextFunction) =>
   getTeamAndMatchesController.handle(req, res, next));
 
-teamRouter.get('/:id', (req: Request, res: Response, next: NextFunction) =>
+leaderRouter.get('/:id', (req: Request, res: Response, next: NextFunction) =>
   getTeamByIdController.handle(req, res, next));
 
 /* router.post(
@@ -27,4 +27,4 @@ router.get(
     loginValidateController.handle(req, res, next),
 ); */
 
-export default teamRouter;
+export default leaderRouter;

@@ -7,7 +7,6 @@ export default class PatchFinishMatchController {
   async handle(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      console.log(id, 'id patch controller');
       if (id) {
         const matches = await this.patchFinishMatchUseCase.execute(id);
         return res.status(200).json(matches);

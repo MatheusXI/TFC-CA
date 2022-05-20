@@ -9,7 +9,7 @@ function errorMiddleware(
   _next: NextFunction,
 ) {
   const newErro = new ErroType(error).erro;
-
+  console.log(error, 'error');
   const { code, message } = newErro;
   response.status(code).json({ message });
 }

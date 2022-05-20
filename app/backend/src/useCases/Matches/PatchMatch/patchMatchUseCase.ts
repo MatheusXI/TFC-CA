@@ -1,10 +1,11 @@
+import IMatchesRepository from '../../../repositories/Matches/IMatchesRepository';
 import CustomError from '../../../auxMiddlewares/Erro/CustomError';
-import MatchesRepository from '../../../repositories/Matches/MatchesRepository';
+import IPatchMatchDTO from './patchMatchDTO';
 
 export default class PatchMatchUseCase {
-  constructor(private matchesRepository: MatchesRepository) {}
+  constructor(private matchesRepository: IMatchesRepository) {}
 
-  async execute(data: any) {
+  async execute(data: IPatchMatchDTO) {
     if (Number.isNaN(data.id)) throw new CustomError(401, 'Invalid Id');
     const userUpdated = await this.matchesRepository.updateMatch(data);
     if (!userUpdated) {

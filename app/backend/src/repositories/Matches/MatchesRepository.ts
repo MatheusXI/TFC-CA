@@ -2,6 +2,7 @@ import Teams from '../../database/models/TeamsModel';
 import Matches from '../../database/models/MatchesModel';
 import IMatchesRepository from './IMatchesRepository';
 import { IMatch } from '../../useCases/Matches/CreateMatch/createMatchDTO';
+import IPatchMatchDTO from '../../useCases/Matches/PatchMatch/patchMatchDTO';
 
 export default class MatchesRepository implements IMatchesRepository {
   private matchesModel;
@@ -10,7 +11,7 @@ export default class MatchesRepository implements IMatchesRepository {
     this.matchesModel = Matches;
   }
 
-  async updateMatch(data: any): Promise<Matches | null> {
+  async updateMatch(data: IPatchMatchDTO): Promise<Matches | null> {
     const { id, ...obj } = data;
     await this.matchesModel.update({ ...obj }, { where: { id } });
     const updatedMatch = await this.getmatchById(id);
@@ -33,8 +34,7 @@ export default class MatchesRepository implements IMatchesRepository {
   }
 
   async createMatch(data: IMatch): Promise<IMatch | null> {
-    const matchCreated = await this.matchesModel.create(data);
-    console.log(matchCreated, 'matchcreated');
+    await this.matchesModel.create(data);
     const matches = await (
       await this.matchesModel.findAll({
         attributes: { exclude: ['home_team', 'away_team'] },

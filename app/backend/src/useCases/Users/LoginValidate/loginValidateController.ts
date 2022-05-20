@@ -7,7 +7,6 @@ export default class LoginValidateController {
   async handle(req: Request, res: Response, next: NextFunction) {
     try {
       const token = req.headers.authorization;
-      console.log(token, 'token headears');
       if (token) {
         const userRole = await this.loginValidateUseCase.execute(token);
         return res.status(200).json(userRole);

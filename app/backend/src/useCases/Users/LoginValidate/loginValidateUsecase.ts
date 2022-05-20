@@ -8,7 +8,6 @@ export default class LoginValidateUseCase {
 
   async execute(data: string) {
     const userToken = await this.tokenRepository.tokenVerify(data);
-    console.log(userToken, 'usertoken');
     if (typeof userToken === 'string') {
       throw new CustomError(401, 'Invalid Token');
     }
