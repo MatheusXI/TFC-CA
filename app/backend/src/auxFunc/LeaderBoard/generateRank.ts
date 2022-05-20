@@ -1,4 +1,4 @@
-type Filtro = 'totalVictories' | 'goalsBalance' | 'goalsFavor' | 'goalsOwn';
+type Filtro = 'totalPoints' | 'totalVictories' | 'goalsBalance' | 'goalsFavor' | 'goalsOwn';
 
 export interface Iresults {
   name: string;
@@ -31,6 +31,8 @@ export default class GenerateRank {
   }
 
   static generateRank(teams: Iresults[]) {
+    const sortedByTotalPoints = GenerateRank.isWinner(teams, 'totalPoints');
+    if (sortedByTotalPoints) return sortedByTotalPoints;
     const sortedByTotalVictories = GenerateRank.isWinner(
       teams,
       'totalVictories',
