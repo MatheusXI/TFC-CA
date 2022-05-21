@@ -55,15 +55,33 @@ export default class CalculateGoals {
     return goalsFavor;
   }
 
+  static calculateGoalsFavorAway(team: Teams) {
+    const awayGoalsFavor = CalculateGoals.calculateAwayGoalsFavor(team);
+    if (!awayGoalsFavor && awayGoalsFavor !== 0) {
+      return null;
+    }
+
+    const goalsFavor = awayGoalsFavor;
+    return goalsFavor;
+  }
+
   static calculateGoalsOwnHome(team: Teams) {
     const homeGoalsOwn = CalculateGoals.calculateHomeGoalsOwn(team);
-    if (
-      (!homeGoalsOwn && homeGoalsOwn !== 0)
-    ) {
+    if (!homeGoalsOwn && homeGoalsOwn !== 0) {
       return null;
     }
 
     const goalsOwn = homeGoalsOwn;
+    return goalsOwn;
+  }
+
+  static calculateGoalsOwnaway(team: Teams) {
+    const awayGoalsOwn = CalculateGoals.calculateAwayGoalsOwn(team);
+    if (!awayGoalsOwn && awayGoalsOwn !== 0) {
+      return null;
+    }
+
+    const goalsOwn = awayGoalsOwn;
     return goalsOwn;
   }
 

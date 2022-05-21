@@ -1,5 +1,7 @@
 import { Response, Router, Request, NextFunction } from 'express';
 import createHomeLeaderBoardController from '../useCases/LeaderBoard/CreateHomeLeadearBoard';
+import createAwayLeaderBoardController from '../useCases/LeaderBoard/CreateAwayLeadearBoard';
+
 import createLeaderBoardController from '../useCases/LeaderBoard/CreateLeaderBoard';
 
 const leaderRouter = Router();
@@ -9,6 +11,9 @@ leaderRouter.get('/', (req: Request, res: Response, next: NextFunction) =>
 
 leaderRouter.get('/home', (req: Request, res: Response, next: NextFunction) =>
   createHomeLeaderBoardController.handle(req, res, next));
+
+leaderRouter.get('/away', (req: Request, res: Response, next: NextFunction) =>
+  createAwayLeaderBoardController.handle(req, res, next));
 /* router.post(
   '/login',
   loginValidationMiddleware,
