@@ -1,5 +1,3 @@
-type Filtro = 'totalPoints' | 'totalVictories' | 'goalsBalance' | 'goalsFavor' | 'goalsOwn';
-
 export interface Iresults {
   name: string;
   totalPoints: number;
@@ -13,36 +11,44 @@ export interface Iresults {
   efficiency: number;
 }
 export default class GenerateRank {
-  private static isWinner(
-    teams: Iresults[],
-    type: Filtro,
-  ): Iresults[] | boolean {
-    const sortedTeams = teams.sort((a, b) => b[type] - a[type]);
+  private static isWinner(teams: Iresults[]): Iresults[] {
+    const sortedTeams = teams.sort((a, b) => {
+      if (a.totalPoints > b.totalPoints) return -1;
+      if (a.totalPoints < b.totalPoints) return 1;
 
-    return this.checkWinner(sortedTeams, type);
-  }
+      if (a.totalVictories > b.totalVictories) return -1;
+      if (a.totalVictories < b.totalVictories) return 1;
 
-  private static checkWinner(sortedTeams: Iresults[], type: Filtro) {
-    const isWinner = sortedTeams.filter(
-      (team) => team[type] === sortedTeams[0][type],
-    ).length;
-    if (isWinner > 1) return false;
+      if (a.goalsBalance > b.goalsBalance) return -1;
+      if (a.goalsBalance < b.goalsBalance) return 1;
+
+      if (a.goalsFavor > b.goalsFavor) return -1;
+      if (a.goalsFavor < b.goalsFavor) return 1;
+
+      if (a.goalsOwn < b.goalsOwn) return -1;
+      if (a.goalsOwn > b.goalsOwn) return 1;
+
+      return 0;
+    });
+
     return sortedTeams;
   }
 
   static generateRank(teams: Iresults[]) {
-    const sortedByTotalPoints = GenerateRank.isWinner(teams, 'totalPoints');
-    if (sortedByTotalPoints) return sortedByTotalPoints;
-    const sortedByTotalVictories = GenerateRank.isWinner(
-      teams,
-      'totalVictories',
-    );
-    if (sortedByTotalVictories) return sortedByTotalVictories;
-    const sortedByBalance = GenerateRank.isWinner(teams, 'goalsBalance');
-    if (sortedByBalance) return sortedByBalance;
-    const sortedByGoalsFavor = GenerateRank.isWinner(teams, 'goalsFavor');
-    if (sortedByGoalsFavor) return sortedByGoalsFavor;
-    const sortedByGoalsOwn = GenerateRank.isWinner(teams, 'goalsOwn');
-    if (sortedByGoalsOwn) return sortedByGoalsOwn;
+    // const sortedByTotalPoints = GenerateRank.isWinner(teams, 'totalPoints');
+    // if (sortedByTotalPoints) return sortedByTotalPoints;
+    // const sortedByTotalVictories = GenerateRank.isWinner(
+    //   teams,
+    //   'totalVictories',
+    // );
+    // if (sortedByTotalVictories) return sortedByTotalVictories;
+    // const sortedByBalance = GenerateRank.isWinner(teams, 'goalsBalance');
+    // if (sortedByBalance) return sortedByBalance;
+    // const sortedByGoalsFavor = GenerateRank.isWinner(teams, 'goalsFavor');
+    // if (sortedByGoalsFavor) return sortedByGoalsFavor;
+    // const sortedByGoalsOwn = GenerateRank.isWinner(teams, 'goalsOwn');
+    // if (sortedByGoalsOwn) return sortedByGoalsOwn;
+    const rank = GenerateRank.isWinner(teams);
+    return rank;
   }
 }
