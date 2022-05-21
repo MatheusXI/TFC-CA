@@ -72,14 +72,14 @@ export default class CreateLeaderBoardUseCase {
 
   private static generateGoalsFavor(teams: Teams) {
     const goalsFavor = CalculateGoals.calculateGoalsFavorHome(teams);
-    if (!goalsFavor) return null;
+    if (!goalsFavor && goalsFavor !== 0) return null;
 
     return goalsFavor;
   }
 
   private static generateGoalsOwn(teams: Teams) {
     const goalsOwn = CalculateGoals.calculateGoalsOwnHome(teams);
-    if (!goalsOwn) return null;
+    if (!goalsOwn && goalsOwn !== 0) return null;
 
     return goalsOwn;
   }
@@ -87,7 +87,12 @@ export default class CreateLeaderBoardUseCase {
   private static calculateGoalsBalance(team: Teams) {
     const totalGoalsFavor = CalculateGoals.calculateGoalsFavorHome(team);
     const totalGoalsOwn = CalculateGoals.calculateGoalsOwnHome(team);
-    if (!totalGoalsFavor || !totalGoalsOwn) return null;
+    if (
+      (!totalGoalsFavor && totalGoalsFavor !== 0)
+      || (!totalGoalsOwn && totalGoalsOwn !== 0)
+    ) {
+      return null;
+    }
     const balance = totalGoalsFavor - totalGoalsOwn;
     return balance;
   }
@@ -103,7 +108,9 @@ export default class CreateLeaderBoardUseCase {
     const totalPoints = CalculateTotalPoints.executeHome(team);
     const totalHomeGames = team.teamHome;
 
-    if (!totalHomeGames || !totalPoints) return null;
+    if (!totalHomeGames || (!totalPoints && totalPoints !== 0)) {
+      return null;
+    }
     const totalGames = totalHomeGames.length;
     return +((totalPoints / (totalGames * 3)) * 100).toFixed(2);
   }

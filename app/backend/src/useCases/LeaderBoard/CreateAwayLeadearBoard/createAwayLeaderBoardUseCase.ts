@@ -43,7 +43,7 @@ export default class CreateLeaderBoardUseCase {
       ({ homeTeamGoals, awayTeamGoals }) => homeTeamGoals < awayTeamGoals,
     );
 
-    if (!totalAwayWins) return null;
+    if (!totalAwayWins && totalAwayWins !== 0) return null;
     const totalVictories = totalAwayWins.length;
 
     return totalVictories;
@@ -54,7 +54,7 @@ export default class CreateLeaderBoardUseCase {
       ({ homeTeamGoals, awayTeamGoals }) => homeTeamGoals > awayTeamGoals,
     );
 
-    if (!totalAwayLoses) return null;
+    if (!totalAwayLoses && totalAwayLoses !== 0) return null;
     const totalLosses = totalAwayLoses.length;
 
     return totalLosses;
@@ -64,7 +64,7 @@ export default class CreateLeaderBoardUseCase {
     const totalAwayDraws = teams.teamAway?.filter(
       ({ homeTeamGoals, awayTeamGoals }) => homeTeamGoals === awayTeamGoals,
     );
-    if (!totalAwayDraws) return null;
+    if (!totalAwayDraws && totalAwayDraws !== 0) return null;
     const totalDraws = totalAwayDraws.length;
 
     return totalDraws;
@@ -72,14 +72,14 @@ export default class CreateLeaderBoardUseCase {
 
   private static generateGoalsFavor(teams: Teams) {
     const goalsFavor = CalculateGoals.calculateGoalsFavorAway(teams);
-    if (!goalsFavor) return null;
+    if (!goalsFavor && goalsFavor !== 0) return null;
 
     return goalsFavor;
   }
 
   private static generateGoalsOwn(teams: Teams) {
     const goalsOwn = CalculateGoals.calculateGoalsOwnaway(teams);
-    if (!goalsOwn) return null;
+    if (!goalsOwn && goalsOwn !== 0) return null;
 
     return goalsOwn;
   }
@@ -87,7 +87,10 @@ export default class CreateLeaderBoardUseCase {
   private static calculateGoalsBalance(team: Teams) {
     const totalGoalsFavor = CalculateGoals.calculateGoalsFavorAway(team);
     const totalGoalsOwn = CalculateGoals.calculateGoalsOwnaway(team);
-    if (!totalGoalsFavor || !totalGoalsOwn) return null;
+    if (
+      (!totalGoalsFavor && totalGoalsFavor !== 0)
+      || (!totalGoalsOwn && totalGoalsOwn !== 0)
+    ) { return null; }
     const balance = totalGoalsFavor - totalGoalsOwn;
     return balance;
   }
@@ -103,7 +106,7 @@ export default class CreateLeaderBoardUseCase {
     const totalPoints = CalculateTotalPoints.executeAway(team);
     const totalAwayGames = team.teamAway;
 
-    if (!totalAwayGames || !totalPoints) return null;
+    if (!totalAwayGames || (!totalPoints && totalPoints !== 0)) return null;
     const totalGames = totalAwayGames.length;
     return +((totalPoints / (totalGames * 3)) * 100).toFixed(2);
   }
