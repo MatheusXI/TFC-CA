@@ -1,6 +1,5 @@
 import { Response, Router, Request, NextFunction } from 'express';
-import getTeamByIdController from '../useCases/Teams/GetTeamById';
-import getTeamAndMatchesController from '../useCases/Teams/GetTeamAndMatches';
+import createHomeLeaderBoardController from '../useCases/LeaderBoard/CreateHomeLeadearBoard';
 import createLeaderBoardController from '../useCases/LeaderBoard/CreateLeaderBoard';
 
 const leaderRouter = Router();
@@ -8,12 +7,8 @@ const leaderRouter = Router();
 leaderRouter.get('/', (req: Request, res: Response, next: NextFunction) =>
   createLeaderBoardController.handle(req, res, next));
 
-leaderRouter.get('/teste', (req: Request, res: Response, next: NextFunction) =>
-  getTeamAndMatchesController.handle(req, res, next));
-
-leaderRouter.get('/:id', (req: Request, res: Response, next: NextFunction) =>
-  getTeamByIdController.handle(req, res, next));
-
+leaderRouter.get('/home', (req: Request, res: Response, next: NextFunction) =>
+  createHomeLeaderBoardController.handle(req, res, next));
 /* router.post(
   '/login',
   loginValidationMiddleware,

@@ -45,13 +45,37 @@ export default class CalculateGoals {
     return goalsOwnAway;
   }
 
+  static calculateGoalsFavorHome(team: Teams) {
+    const homeGoalsFavor = CalculateGoals.calculateHomeGoalsFavor(team);
+    if (!homeGoalsFavor && homeGoalsFavor !== 0) {
+      return null;
+    }
+
+    const goalsFavor = homeGoalsFavor;
+    return goalsFavor;
+  }
+
+  static calculateGoalsOwnHome(team: Teams) {
+    const homeGoalsOwn = CalculateGoals.calculateHomeGoalsOwn(team);
+    if (
+      (!homeGoalsOwn && homeGoalsOwn !== 0)
+    ) {
+      return null;
+    }
+
+    const goalsOwn = homeGoalsOwn;
+    return goalsOwn;
+  }
+
   static calculateGoalsFavor(team: Teams) {
     const homeGoalsFavor = CalculateGoals.calculateHomeGoalsFavor(team);
     const awayGoalsFavor = CalculateGoals.calculateAwayGoalsFavor(team);
     if (
       (!homeGoalsFavor && homeGoalsFavor !== 0)
       || (!awayGoalsFavor && awayGoalsFavor !== 0)
-    ) { return null; }
+    ) {
+      return null;
+    }
 
     const goalsFavor = homeGoalsFavor + awayGoalsFavor;
     return goalsFavor;
@@ -63,7 +87,9 @@ export default class CalculateGoals {
     if (
       (!homeGoalsOwn && homeGoalsOwn !== 0)
       || (!awayGoalsOwn && awayGoalsOwn !== 0)
-    ) { return null; }
+    ) {
+      return null;
+    }
 
     const goalsOwn = homeGoalsOwn + awayGoalsOwn;
     return goalsOwn;

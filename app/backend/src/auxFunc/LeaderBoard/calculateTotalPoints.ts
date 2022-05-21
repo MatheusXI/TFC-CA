@@ -33,10 +33,27 @@ export default class CalculateTotalPoints {
     return pointsAway?.totalPoints;
   }
 
+  static executeHome(team: ITeamAnMatches) {
+    const pointsHome = CalculateTotalPoints.calculateHomePoints(team);
+
+    return pointsHome;
+  }
+
+  static executeAway(team: ITeamAnMatches) {
+    const pointsAway = CalculateTotalPoints.calculateAwayPoints(team);
+
+    return pointsAway;
+  }
+
   static execute(team: ITeamAnMatches) {
     const pointsHome = CalculateTotalPoints.calculateHomePoints(team);
     const pointsAway = CalculateTotalPoints.calculateAwayPoints(team);
-    if ((!pointsAway && pointsAway !== 0) || (!pointsHome && pointsHome !== 0)) return null;
+    if (
+      (!pointsAway && pointsAway !== 0)
+      || (!pointsHome && pointsHome !== 0)
+    ) {
+      return null;
+    }
     return pointsHome + pointsAway;
   }
 }

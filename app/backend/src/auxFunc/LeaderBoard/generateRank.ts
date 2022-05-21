@@ -11,7 +11,7 @@ export interface Iresults {
   efficiency: number;
 }
 export default class GenerateRank {
-  private static isWinner(teams: Iresults[]): Iresults[] {
+  private static sortTeams(teams: Iresults[]): Iresults[] {
     const sortedTeams = teams.sort((a, b) => {
       if (a.totalPoints > b.totalPoints) return -1;
       if (a.totalPoints < b.totalPoints) return 1;
@@ -35,20 +35,7 @@ export default class GenerateRank {
   }
 
   static generateRank(teams: Iresults[]) {
-    // const sortedByTotalPoints = GenerateRank.isWinner(teams, 'totalPoints');
-    // if (sortedByTotalPoints) return sortedByTotalPoints;
-    // const sortedByTotalVictories = GenerateRank.isWinner(
-    //   teams,
-    //   'totalVictories',
-    // );
-    // if (sortedByTotalVictories) return sortedByTotalVictories;
-    // const sortedByBalance = GenerateRank.isWinner(teams, 'goalsBalance');
-    // if (sortedByBalance) return sortedByBalance;
-    // const sortedByGoalsFavor = GenerateRank.isWinner(teams, 'goalsFavor');
-    // if (sortedByGoalsFavor) return sortedByGoalsFavor;
-    // const sortedByGoalsOwn = GenerateRank.isWinner(teams, 'goalsOwn');
-    // if (sortedByGoalsOwn) return sortedByGoalsOwn;
-    const rank = GenerateRank.isWinner(teams);
+    const rank = GenerateRank.sortTeams(teams);
     return rank;
   }
 }
