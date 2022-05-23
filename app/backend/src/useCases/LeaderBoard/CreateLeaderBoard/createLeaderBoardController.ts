@@ -7,7 +7,7 @@ export default class CreateLeaderBoardController {
   async handle(_req: Request, res: Response, next: NextFunction) {
     try {
       const teams = await this.createLeaderBoardUseCase.execute();
-      return res.status(201).json(teams);
+      return res.status(200).json(teams);
     } catch (error) {
       next(error);
     }
