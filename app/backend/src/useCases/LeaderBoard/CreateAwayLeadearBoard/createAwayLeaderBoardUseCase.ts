@@ -50,7 +50,7 @@ export default class CreateLeaderBoardUseCase {
   }
 
   private static generateTotalLosses(teams: Teams) {
-    const totalAwayLoses = teams.teamHome?.filter(
+    const totalAwayLoses = teams.teamAway?.filter(
       ({ homeTeamGoals, awayTeamGoals }) => homeTeamGoals > awayTeamGoals,
     );
 
@@ -90,7 +90,9 @@ export default class CreateLeaderBoardUseCase {
     if (
       (!totalGoalsFavor && totalGoalsFavor !== 0)
       || (!totalGoalsOwn && totalGoalsOwn !== 0)
-    ) { return null; }
+    ) {
+      return null;
+    }
     const balance = totalGoalsFavor - totalGoalsOwn;
     return balance;
   }

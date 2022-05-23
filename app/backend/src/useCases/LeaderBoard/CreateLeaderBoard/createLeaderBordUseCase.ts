@@ -20,15 +20,7 @@ export interface Iresult {
 export default class CreateLeaderBoardUseCase {
   teamsAndMatches: Teams[] | any;
 
-  constructor(private teamRepository: ITeamRepository) {
-    this.generateTeamAndMatches();
-  }
-
-  private async generateTeamAndMatches() {
-    const teamAndMatches = await this.teamRepository.getTeamAndMatches();
-    if (!teamAndMatches) return null;
-    this.teamsAndMatches = teamAndMatches;
-  }
+  constructor(private teamRepository: ITeamRepository) {}
 
   private static generateName(teams: Teams) {
     return teams.teamName;
