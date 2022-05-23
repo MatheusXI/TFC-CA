@@ -11,15 +11,13 @@ const matchesSchema = Joi.object({
     'any.required': 'awayTeam is required',
     'number.min': 'awayTeam Id must be bigger than 0',
   }),
-  homeTeamGoals: Joi.number().required().min(1).messages({
+  homeTeamGoals: Joi.number().required().messages({
     'number.base': 'homeTeamGoals must be a number',
     'any.required': 'homeTeamGoals is required',
-    'number.min': 'homeTeamGoals Id must be bigger than 0',
   }),
-  awayTeamGoals: Joi.number().required().min(1).messages({
+  awayTeamGoals: Joi.number().required().messages({
     'number.base': 'awayTeamGoals must be a number',
     'any.required': 'awayTeamGoals is required',
-    'number.min': 'awayTeamGoals Id must be bigger than 0',
   }),
   inProgress: Joi.boolean()
     .messages({
