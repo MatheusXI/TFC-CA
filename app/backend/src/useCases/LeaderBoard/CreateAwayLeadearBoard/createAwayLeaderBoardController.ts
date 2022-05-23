@@ -7,7 +7,7 @@ export default class CreateAwayLeaderBoardController {
   async handle(_req: Request, res: Response, next: NextFunction) {
     try {
       const teams = await this.createAwayLeaderBoardUseCase.execute();
-      return res.status(200).json(teams);
+      return res.status(201).json(teams);
     } catch (error) {
       next(error);
     }
