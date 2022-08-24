@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import CreateAwayLeaderBoardUseCase from './createAwayLeaderBoardUseCase';
+//teste
 
 export default class CreateAwayLeaderBoardController {
   constructor(private createAwayLeaderBoardUseCase: CreateAwayLeaderBoardUseCase) {}
