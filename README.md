@@ -28,7 +28,7 @@ npm install
 
 * Docker
   ```
- Docker-compose up
+  Docker-compose up
   ```
 
 ## Executando Testes
